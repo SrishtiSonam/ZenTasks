@@ -1,0 +1,19 @@
+# Specify the list of files that are going to be excluded from the Docker Content, directory you are running from.
+
+# Git - Include all git history a huge file.
+.git           
+.gitignore
+
+# Docker - for our local machines - no need to copy in our docker image.
+.docker
+
+# Python
+app/__pycache__/
+app/*/__pycache__/
+app/*/*/__pycache__/
+app/*/*/*/__pycache__/
+.env/
+.venv/
+venv/ 
+# pycache - cache created by python - no need - specific to our local machine and OS.
+# '*' - all of the differnt pycache be removed. [ Specify each subdirectory - here ** doesn't work. ]
