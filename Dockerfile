@@ -16,6 +16,7 @@ ENV PYTHONUNBUFFERED 1
     # Ask python to not buffer the output - Output will be directly printed to the console - No delay of messages from python application to screen - logs come immediately on the screen. 
     
 COPY ./requirements.txt /tmp/requirements.txt
+COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 COPY ./app /app
 WORKDIR /app
 EXPOSE 8000
@@ -24,9 +25,16 @@ EXPOSE 8000
 # Expose port 8000 from our container to machine, on running the container.
 
 
+ARG DEV=false
+# Build argument 'DEV' and sets default value to false. 
+
 RUN python -m venv /py && \                 
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /tmp/requirements.txt && \
+    # A shell script        -       Condotionally       - fi - format for ending the if statement
+    if [ $DEV = 'true']; \
+        then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
+    fi && \
     rm -rf /tmp && \
     adduser \
         --disabled-password \

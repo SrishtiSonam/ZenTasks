@@ -17,3 +17,7 @@ app/*/*/*/__pycache__/
 venv/ 
 # pycache - cache created by python - no need - specific to our local machine and OS.
 # '*' - all of the differnt pycache be removed. [ Specify each subdirectory - here ** doesn't work. ]
+
+
+#  docker build .       -   (1) 
+# It goes through each step defined in docker file and uses caching behind the scenes. At first time download all the dependencies.
