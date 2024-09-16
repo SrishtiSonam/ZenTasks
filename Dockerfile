@@ -26,14 +26,13 @@ EXPOSE 8000
 
 
 ARG DEV=false
-# Build argument 'DEV' and sets default value to false. 
+# Build argument "DEV" and sets default value to false. 
 
 RUN python -m venv /py && \                 
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /tmp/requirements.txt && \
-    # A shell script        -       Condotionally       - fi - format for ending the if statement
-    if [ $DEV = 'true']; \
-        then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
+    if [$DEV = 'true']; \
+        then /py/bin/pip install -r /tmp/requirements.dev.txt; \
     fi && \
     rm -rf /tmp && \
     adduser \
@@ -41,6 +40,7 @@ RUN python -m venv /py && \
         --no-create-home \
         django-user 
 
+# A shell script        -       Condotionally       - fi - format for ending the if statement
 # Run command to install some depencencies
 # Runs the command on alpine image that we are using when we are building our image.
 # Here we broke the commands down onto one run block
@@ -49,16 +49,16 @@ RUN python -m venv /py && \
 # 1. Create a new virtual environment, use to store our dependencies.
 # { Virtual env not required when working on Docker MOSTLY, but for some edge cases where python dependencies on actual base image might conflict with python dependencies of your project  }
 
-# 2. Upgrading pip for virtual env. '/py/bin/pip' - Full path of our virtual env.
+# 2. Upgrading pip for virtual env. "/py/bin/pip" - Full path of our virtual env.
 
 # 3. Installing our requiremnts in our virtual environment.
 
-# 4. Then remove the tmp directory '/tmp' as we don't want any extra dependences on our actual image - as lightweight as possible - remove extra in build process.
+# 4. Then remove the tmp directory "/tmp" as we don"t want any extra dependences on our actual image - as lightweight as possible - remove extra in build process.
 
 # 5. Add user block - Add user Command ->   Add new user inside our image   { To not to use root user }
     # If not specified this bit then only user available inside alpine image would be the root user.
     # Root user - Full access and permissions to do everything on the server.
-    # { Don't run your application using the root user - attacker have full access of docker conatiner. }
+    # { Don"t run your application using the root user - attacker have full access of docker conatiner. }
     # No password to log on, just by default.
     # No home directory for the user - Not nesseccary and light weight.
     # django-user -> Specify the name of the user - an app so call whatever.
@@ -75,4 +75,4 @@ USER django-user
 # Specify hte user that we are switching to.
 # Before this everything was running by root user.
 # Containers that are made out of this image will run using the last user that image is switched to.
-# Any time that we run something from this image it's going to run as the django-user.
+# Any time that we run something from this image it"s going to run as the django-user.
