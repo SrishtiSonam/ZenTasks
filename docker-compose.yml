@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 # version of docker compose syntax 
 
 
@@ -16,7 +16,7 @@ services:
     # Maps port 8000 to our local machine to port 8000 inside our docker container.
     # Access the network when we want to connect to our server.
     ports: 
-      - '8000:8000'
+      - "8000:8000"
     # Volumes - odd way of mapping directories from our system into the docker container.
     # Updates in local machine gets reflects in running conatiner.
     volumes: 
@@ -24,7 +24,7 @@ services:
     # Command to run the service - default command. 
     # We can override this command when we run docker compose. 
     command: >
-      sh -c 'python manage.py runserver 0.0.0.0:8000'
+      sh -c "python manage.py runserver 0.0.0.0:8000"
 
 
 
