@@ -18,7 +18,7 @@ services:
     ports: 
       - "8000:8000"
     # Volumes - odd way of mapping directories from our system into the docker container.
-    # Updates in local machine gets reflects in running conatiner.
+    # Updates in local machine gets reflects in running conatiner and vise-versa.
     volumes: 
       - ./app:/app
     # Command to run the service - default command. 
