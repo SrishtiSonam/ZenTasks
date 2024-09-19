@@ -19,3 +19,6 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+one=1
+# This will break the linting as spaces on both side of = is required.
