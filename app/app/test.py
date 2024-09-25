@@ -19,5 +19,3 @@ class CalcTest(SimpleTestCase):
         """ Test subtracting numbers together. """
         res = calculate.subtract(8, 7)
         self.assertEqual(res, 1)
-
-
