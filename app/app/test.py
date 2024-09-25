@@ -2,9 +2,10 @@
     Sample test
 """
 
-from django.test import SimpleTestCase # type: ignore
+from django.test import SimpleTestCase  # type: ignore
 
 from app import calculate
+
 
 class CalcTest(SimpleTestCase):
     """ Testing the calculate module. """
@@ -14,9 +15,9 @@ class CalcTest(SimpleTestCase):
         res = calculate.add(8, 7)
         self.assertEqual(res, 15)
 
-
     def test_subtract_nums(self):
         """ Test subtracting numbers together. """
         res = calculate.subtract(8, 7)
         self.assertEqual(res, 1)
+
 
