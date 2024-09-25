@@ -25,6 +25,33 @@ services:
     # We can override this command when we run docker compose. 
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      # Dev credentials for local machine as they are hardcoded.
+      - DB_HOST = db
+      - DB_NAME = devdb
+      - DB_USER = devuser
+      - DB_PASS = changeme 
+    depends_on:
+      - db
+  
+  # Name of the service.
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+    environment:
+      # Setting env variables 
+      # Setting initial database configuration for the new db services.
+      # Dev credentials for local machine.
+      - POSTGRES_DB = devdb
+      - POSTGRES_USER = devuser 
+      - POSTGRES_PASSWORD = changeme 
+
+volumes:
+  # Will automatically picks default location
+  dev-db-data:
+
+
 
 
 

@@ -30,11 +30,16 @@ ARG DEV=false
 
 RUN python -m venv /py && \                 
     /py/bin/pip install --upgrade pip && \
+    apk add --update --no-cache postgresql-client && \ 
+    apk add --update --no-cache --virtual .tmp-build-deps \
+        # Settings virtual dependencies package inside our docker file -- Removing them later.
+         build-base postgresql-dev musl-dev && \  
     /py/bin/pip install -r /tmp/requirements.txt && \
     if [ $DEV = true ]; \
         then /py/bin/pip install -r /tmp/requirements.dev.txt; \
     fi && \
     rm -rf /tmp && \
+    apk del .tmp-build-deps && \
     adduser \
         --disabled-password \
         --no-create-home \
@@ -76,3 +81,5 @@ USER django-user
 # Before this everything was running by root user.
 # Containers that are made out of this image will run using the last user that image is switched to.
 # Any time that we run something from this image it"s going to run as the django-user.
+
+
