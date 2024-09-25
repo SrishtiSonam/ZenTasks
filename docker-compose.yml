@@ -28,9 +28,9 @@ services:
     environment:
       # Dev credentials for local machine as they are hardcoded.
       - DB_HOST = db
-      - DB_NAME = devdb
-      - DB_USER = devuser
-      - DB_PASS = changeme 
+      - DB_NAME = 'devdb'
+      - DB_USER = 'devuser'
+      - DB_PASS = 'changeme' 
     depends_on:
       - db
   
