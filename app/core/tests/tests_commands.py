@@ -15,7 +15,7 @@ from django.db.utils import OperationalError
 # Another operational error (exception) that may be thrown by the db,
 # depending on what stage of the start up process it is.
 from django.test import SimpleTestCase
-# Db not available, 
+# Db not available,
 # no need of migrations and all the things required for test database.
 
 
@@ -25,7 +25,7 @@ from django.test import SimpleTestCase
 class CommandTest(SimpleTestCase):
     """ Test Commands """
 
-    def test_wait_for_db_ready(self, patched_check):            
+    def test_wait_for_db_ready(self, patched_check):
         # patched_check due to decorator.
         """ Test waiting for db if db is ready - One Test Case """
         patched_check.return_value = True
