@@ -29,10 +29,10 @@ services:
              python manage.py runserver 0.0.0.0:8000"
     environment:
       # Dev credentials for local machine as they are hardcoded.
-      - DB_HOST = db
-      - DB_NAME = devdb
-      - DB_USER = devuser
-      - DB_PASS = changeme 
+      - DB_HOST=db
+      - DB_NAME=devdb
+      - DB_USER=devuser
+      - DB_PASS=changeme 
     depends_on:
       - db
   
@@ -45,9 +45,9 @@ services:
       # Setting env variables 
       # Setting initial database configuration for the new db services.
       # Dev credentials for local machine.
-      - POSTGRES_DB = devdb
-      - POSTGRES_USER = devuser 
-      - POSTGRES_PASSWORD = changeme 
+      - POSTGRES_DB=devdb
+      - POSTGRES_USER=devuser 
+      - POSTGRES_PASSWORD=changeme 
 
 volumes:
   # Will automatically picks default location
