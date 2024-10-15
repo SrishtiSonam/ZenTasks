@@ -30,7 +30,8 @@ class UserAdmin(BaseUserAdmin):
     readonly_fields = ['last_login']
     add_fieldsets = (
         (None, {
-            'classes': ('wide',),    # This change does not make big difference but its about how page looks.
+            'classes': ('wide',),
+            # This change does not make big difference but its about how page looks.
             'fields': (
                 'email',
                 'password1',
@@ -42,5 +43,6 @@ class UserAdmin(BaseUserAdmin):
             )
         }),
     )
+
 
 admin.site.register(models.User, UserAdmin)
