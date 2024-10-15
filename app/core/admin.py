@@ -31,7 +31,8 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            # This change does not make big difference but its about how page looks.
+            # This change does not make big difference
+            #   but its about how page looks.
             'fields': (
                 'email',
                 'password1',
